@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<android.inputmethodservice.KeyboardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboard"
+    android:background="@color/keyboard_main"
+    android:keyBackground="@color/keyboard_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:keyPreviewLayout ="@layout/preview"/>
+<!--TODO - FIND SPELLING CORRECTION LIBRARY OR CODE AND IMPLEMENT HERE AND CONVERT TO MATERIAL DESIGN-->
+<!--android.inputmethodservice.KeyboardView allows this code to be recognized as a keyboard-->

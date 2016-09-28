@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Butterboard by Double Dot Labs</string> <!--The keyboard's name-->
+    <string name="subtype_en_US">English (US)</string> <!--The languages used - In this case: English US-->
+</resources>
