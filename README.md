@@ -1,4 +1,4 @@
-#Butterboard For Android and AOSB
+#Butterboard For Android and AOSDD
 Butterboard is an upcoming keyboard with gif search and stickers, as well as some basic themes and soon, use with the color algorithm from Status by James Fenn. 
 NOTE: THIS REPO WAS CREATED ON 9/27/2016 AND IS IN EARLY DEVELOPMENT
 
