@@ -49,13 +49,14 @@
         <Key android:codes="110" android:keyLabel="n"/>
         <Key android:codes="109" android:keyLabel="m"/>
         <Key android:codes="46" android:keyLabel="."/>
-        <Key android:codes="63,33,58" android:keyLabel="\? ! :" android:keyEdgeFlags="right"/>
+        <Key android:codes="-5" android:keyIcon="@drawable/backspace_white" android:keyWidth="20%p" android:isRepeatable="true" android:keyEdgeFlags="right"/>
+        <!--<Key android:codes="63,33,58" android:keyLabel="\? ! :" android:keyEdgeFlags="right"/>-->
+        <!--TODO: ^^^^CHANGE THIS TO LEFT BOTTOM OF KEYBOARD + SHOW NEW KEYS^^^^-->
     </Row>
     <Row android:rowEdgeFlags="bottom">
         <Key android:codes="44" android:keyLabel="," android:keyWidth="10%p"  android:keyEdgeFlags="left"/>
         <Key android:codes="47" android:keyLabel="/" android:keyWidth="10%p" />
         <Key android:codes="32" android:keyLabel="SPACE" android:keyWidth="40%p" android:isRepeatable="true"/>
-        <Key android:codes="-5" android:keyLabel="DEL" android:keyWidth="20%p" android:isRepeatable="true"/>
-        <Key android:codes="-4" android:keyLabel="DONE" android:keyWidth="20%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="-4" android:keyIcon="@drawable/return_white" android:keyWidth="20%p" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>
