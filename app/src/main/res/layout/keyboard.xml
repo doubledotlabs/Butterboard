@@ -8,5 +8,5 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:keyTextSize="30sp"
+    android:inputType="textAutoCorrect"
     android:keyPreviewLayout ="@layout/preview"/>
-<!--TODO - FIND SPELLING CORRECTION LIBRARY OR CODE AND IMPLEMENT HERE-->
