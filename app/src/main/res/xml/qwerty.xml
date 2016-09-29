@@ -2,24 +2,20 @@
     android:keyWidth="15%p"
     android:horizontalGap="5px"
     android:verticalGap="5px"
+    android:textSize="15sp"
     android:keyHeight="60dp">
-    <!--In Android, keyboards need key codes and labels. Each key code corresponds to that key's Unicode number-->
-    <!--For example: Pressing A would result in calling Unicode 97, which would also require the label "A", which is seen on the keyboard.-->
-    <!--Some keys, however, would require Edge Flags to indicate the start and end of that row.-->
-    <!--For example: the first row of a keyboard is QWERTYUIOP. So Q would need Android:keyEdgeFlags="left", and P would need right.-->
-    <!--If the unicode is put in succession, similar to how 63, 33, and 58 are in this keyboard, then they will be used in that order upon pressing.-->
-    <Row> <!--Rows go from top to bottom--> <!--TODO: REMOVE TOP ROW AND ADD SWITCH TO NEW LAYOUT FOR NUMBERS & PUNCTUATION-->
-        <Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>
-        <Key android:codes="50" android:keyLabel="2"/>
-        <Key android:codes="51" android:keyLabel="3"/>
-        <Key android:codes="52" android:keyLabel="4"/>
-        <Key android:codes="53" android:keyLabel="5"/>
-        <Key android:codes="54" android:keyLabel="6"/>
-        <Key android:codes="55" android:keyLabel="7"/>
-        <Key android:codes="56" android:keyLabel="8"/>
-        <Key android:codes="57" android:keyLabel="9"/>
-        <Key android:codes="48" android:keyLabel="0" android:keyEdgeFlags="right"/>
-    </Row>
+    <!--<Row>-->
+        <!--<Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>-->
+        <!--<Key android:codes="50" android:keyLabel="2"/>-->
+       <!--<Key android:codes="51" android:keyLabel="3"/>-->
+        <!--<Key android:codes="52" android:keyLabel="4"/>-->
+       <!-- <Key android:codes="53" android:keyLabel="5"/>-->
+       <!-- <Key android:codes="54" android:keyLabel="6"/>-->
+       <!-- <Key android:codes="55" android:keyLabel="7"/>-->
+        <!--<Key android:codes="56" android:keyLabel="8"/>-->
+        <!--<Key android:codes="57" android:keyLabel="9"/>-->
+       <!-- <Key android:codes="48" android:keyLabel="0" android:keyEdgeFlags="right"/>-->
+   <!-- </Row>-->
     <Row>
         <Key android:codes="113" android:keyLabel="q" android:keyEdgeFlags="left"/>
         <Key android:codes="119" android:keyLabel="w"/>
