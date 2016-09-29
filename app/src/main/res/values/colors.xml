@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
   <color name="keyboard_main">#263238</color>
+    <color name="space">#607D8B</color>
 </resources>
