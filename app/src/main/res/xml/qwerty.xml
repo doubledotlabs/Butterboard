@@ -41,7 +41,7 @@
         <!--TODO: ^^^^CHANGE THIS TO LEFT BOTTOM OF KEYBOARD + SHOW NEW KEYS LAYOUT^^^^-->
     </Row>
     <Row>
-        <Key android:codes="-1" android:keyLabel="CAPS" android:keyEdgeFlags="left"/>
+        <Key android:codes="-1" android:keyIcon="@drawable/capswhite" android:keyEdgeFlags="left"/>
         <Key android:codes="122" android:keyLabel="z"/>
         <Key android:codes="120" android:keyLabel="x"/>
         <Key android:codes="99" android:keyLabel="c"/>
