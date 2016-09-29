@@ -2,8 +2,7 @@
     android:keyWidth="15%p"
     android:horizontalGap="5px"
     android:verticalGap="5px"
-    android:textSize="15sp"
-    android:keyHeight="60dp">
+    android:keyHeight="70dp">
     <!--<Row>-->
         <!--<Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>-->
         <!--<Key android:codes="50" android:keyLabel="2"/>-->
