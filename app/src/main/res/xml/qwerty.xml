@@ -2,7 +2,7 @@
     android:keyWidth="10%p"
     android:horizontalGap="0px"
     android:verticalGap="0px"
-    android:keyHeight="80dp">
+    android:keyHeight="50dp">
     <!--In Android, keyboards need key codes and labels. Each key code corresponds to that key's Unicode number-->
     <!--For example: Pressing A would result in calling Unicode 97, which would also require the label "A", which is seen on the keyboard.-->
     <!--Some keys, however, would require Edge Flags to indicate the start and end of that row.-->
