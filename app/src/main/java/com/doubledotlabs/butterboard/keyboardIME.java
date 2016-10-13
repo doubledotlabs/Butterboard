@@ -6,6 +6,7 @@ import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
+/*TODO - CHANGE SIZE DUE TO SMALLER DPI DISPLAYS - 5 INCH AND BELOW*/
 /*This is the entire service that is used by the entire keyboard - this is the heart, lungs, and basically other parts of the
 * keyboard.*/
 public class keyboardIME extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
