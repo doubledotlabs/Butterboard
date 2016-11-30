@@ -1,4 +1,11 @@
 <resources>
-    <string name="app_name">Butterboard by Double Dot Labs</string> <!--The keyboard's name-->
-    <string name="subtype_en_US">English (US)</string> <!--The languages used - In this case: English US-->
+    <string name="app_name">Butterboard</string> <!--The layout_keyboard's name-->
+    <string name="app_name_full">Butterboard by Double Dot Labs</string>
+
+    <string name="service_name">Accessibility Service</string>
+    <string name="service_desc">This is needed to get the color scheme of the current app in order to theme the keyboard.</string>
+
+    <string name="subtype_en_US">English (US)</string>
+    <string name="action_set_input">Input Settings</string>
+    <string name="action_accessibility">Accessibility Service</string> <!--The languages used - In this case: English US-->
 </resources>

@@ -1,20 +1,49 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.doubledotlabs.butterboard">
 
-    <application android:allowBackup="true"
-        android:label="@string/app_name"
+    <application
+        android:name=".Butterboard"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--This service is bound to the keyboardIME java class/service - *IMPORTANT INSIDE OF MANIFEST*-->
-        <service android:name="com.doubledotlabs.butterboard.keyboardIME"
+
+        <activity android:name=".activities.SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--This service is bound to the KeyboardService java class/service - *IMPORTANT INSIDE OF MANIFEST*-->
+        <service
+            android:name="com.doubledotlabs.butterboard.services.KeyboardService"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_INPUT_METHOD">
-            <meta-data android:name="android.view.im" android:resource="@xml/method"/>
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".services.AccessibilityService"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibilityservice" />
+
+        </service>
+
     </application>
 
 </manifest>
