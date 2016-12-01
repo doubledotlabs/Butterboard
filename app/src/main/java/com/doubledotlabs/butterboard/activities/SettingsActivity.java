@@ -14,10 +14,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import com.doubledotlabs.butterboard.R;
 import com.doubledotlabs.butterboard.adapters.CategoryAdapter;
+import com.doubledotlabs.butterboard.utils.KeyboardUtils;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -30,6 +30,7 @@ public class SettingsActivity extends AppCompatActivity {
     private AppCompatImageView imageView;
     private Toolbar toolbar;
     private RecyclerView recyclerView;
+    private View setInputButton, accessibilityButton;
 
     private GridLayoutManager layoutManager;
     private CategoryAdapter adapter;
@@ -45,6 +46,8 @@ public class SettingsActivity extends AppCompatActivity {
         imageView = (AppCompatImageView) findViewById(R.id.imageView);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        setInputButton = findViewById(R.id.setInputView);
+        accessibilityButton = findViewById(R.id.accessibilityView);
 
         layoutManager = new GridLayoutManager(this, getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2);
         recyclerView.setLayoutManager(layoutManager);
@@ -52,14 +55,16 @@ public class SettingsActivity extends AppCompatActivity {
         adapter = new CategoryAdapter();
         recyclerView.setAdapter(adapter);
 
-        findViewById(R.id.setInputView).setOnClickListener(new View.OnClickListener() {
+        setInputButton.setVisibility(KeyboardUtils.isEnabled(this) ? View.GONE : View.VISIBLE);
+        setInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS), REQUEST_INPUT_METHOD);
             }
         });
 
-        findViewById(R.id.accessibilityView).setOnClickListener(new View.OnClickListener() {
+        accessibilityButton.setVisibility(KeyboardUtils.isAccessibilityEnabled(this) ? View.GONE : View.VISIBLE);
+        accessibilityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS), REQUEST_ACCESSIBILITY);
@@ -73,10 +78,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         switch (requestCode) {
             case REQUEST_INPUT_METHOD:
-                InputMethodManager mgr = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                if (mgr != null) mgr.showInputMethodPicker(); //TODO: ADD AN IF STATEMENT
+                setInputButton.setVisibility(KeyboardUtils.isEnabled(this) ? View.GONE : View.VISIBLE);
                 break;
             case REQUEST_ACCESSIBILITY:
+                accessibilityButton.setVisibility(KeyboardUtils.isAccessibilityEnabled(this) ? View.GONE : View.VISIBLE);
                 break;
         }
     }

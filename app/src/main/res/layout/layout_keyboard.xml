@@ -2,7 +2,7 @@
 <android.inputmethodservice.KeyboardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/keyboard"
-    android:keyBackground="@color/keyboard_main"
+    android:keyBackground="@android:color/transparent"
     android:background="@color/keyboard_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
