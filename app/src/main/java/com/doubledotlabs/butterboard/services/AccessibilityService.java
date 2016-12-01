@@ -3,7 +3,6 @@ package com.doubledotlabs.butterboard.services;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.ComponentName;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.view.accessibility.AccessibilityEvent;
 
@@ -34,11 +33,19 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        if (butterboard != null && packageManager != null && event.getPackageName() != null && event.getPackageName().toString().equals(butterboard.getPackageName())) {
-            int color = Color.BLACK;
+        if (butterboard != null && packageManager != null && event.getPackageName() != null && !event.getPackageName().toString().equals(butterboard.getPackageName())) {
+            ComponentName componentName = new ComponentName(event.getPackageName().toString(), event.getClassName().toString());
+            try {
+                packageManager.getActivityInfo(componentName, PackageManager.GET_META_DATA);
+            } catch (PackageManager.NameNotFoundException e) {
+                return;
+            }
+
+            int color = ColorUtils.getDefaultColor(this);
 
             try {
-                ColorUtils.getPrimaryColor(this, new ComponentName(event.getPackageName().toString(), event.getClassName().toString()));
+                Integer primaryColor = ColorUtils.getPrimaryColor(this, componentName);
+                if (primaryColor != null) color = primaryColor;
             } catch (Exception ignored) {
             }
 
