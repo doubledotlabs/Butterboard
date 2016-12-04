@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<android.inputmethodservice.KeyboardView
+<com.doubledotlabs.butterboard.views.ButteryKeyboardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/keyboard"
     android:keyBackground="@android:color/transparent"
@@ -7,6 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:keyTextSize="30sp"
+    android:keyTextSize="24sp"
     android:inputType="textAutoCorrect"
     android:keyPreviewLayout="@layout/layout_preview" />

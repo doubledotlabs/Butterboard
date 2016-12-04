@@ -11,13 +11,14 @@ import android.view.inputmethod.InputConnection;
 
 import com.doubledotlabs.butterboard.Butterboard;
 import com.doubledotlabs.butterboard.R;
+import com.doubledotlabs.butterboard.views.ButteryKeyboardView;
 
 /*TODO - CHANGE SIZE DUE TO SMALLER DPI DISPLAYS - 5 INCH AND BELOW*/
 /*This is the entire service that is used by the entire layout_keyboard - this is the heart, lungs, and basically other parts of the
 * layout_keyboard.*/
 public class KeyboardService extends InputMethodService implements KeyboardView.OnKeyboardActionListener, Butterboard.OnColorChangeListener {
 
-    private KeyboardView keys;
+    private ButteryKeyboardView keyboardView;
     private Keyboard qwerty;
     private boolean caps = false;
 
@@ -47,7 +48,7 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
             case Keyboard.KEYCODE_SHIFT:
                 caps = !caps;
                 qwerty.setShifted(caps);
-                keys.invalidateAllKeys();
+                keyboardView.invalidateAllKeys();
                 break;
             case Keyboard.KEYCODE_DONE:
                 input.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
@@ -92,13 +93,14 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
 
     @Override
     public View onCreateInputView() {
-        keys = (KeyboardView) getLayoutInflater().inflate(R.layout.layout_keyboard, null); // Avoid Passing Null - TODO: FIND ALTERNATIVE
-        keys.setBackgroundColor(butterboard.getColor());
+        keyboardView = (ButteryKeyboardView) getLayoutInflater().inflate(R.layout.layout_keyboard, null); // Avoid Passing Null - TODO: FIND ALTERNATIVE
 
         qwerty = new Keyboard(this, R.xml.qwerty);
-        keys.setKeyboard(qwerty);
-        keys.setOnKeyboardActionListener(this);
-        return keys;
+        keyboardView.setKeyboard(qwerty);
+        keyboardView.setOnKeyboardActionListener(this);
+
+        onColorChanged(butterboard.getColor());
+        return keyboardView;
     }
 
     //Sounds that are played according to key presses - Standard is used for all other keys
@@ -122,6 +124,6 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
 
     @Override
     public void onColorChanged(@ColorInt int color) {
-        if (keys != null) keys.setBackgroundColor(color);
+        if (keyboardView != null) keyboardView.setColor(color);
     }
 }
