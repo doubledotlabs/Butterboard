@@ -4,6 +4,7 @@ import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
+import android.os.Vibrator;
 import android.support.annotation.ColorInt;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,17 +19,18 @@ import com.doubledotlabs.butterboard.views.ButteryKeyboardView;
 * layout_keyboard.*/
 public class KeyboardService extends InputMethodService implements KeyboardView.OnKeyboardActionListener, Butterboard.OnColorChangeListener {
 
-    private ButteryKeyboardView keyboardView;
-    private Keyboard qwerty;
-    private boolean caps = false;
-
     private Butterboard butterboard;
+    private Vibrator vibrator;
+
+    private ButteryKeyboardView keyboardView;
 
     @Override
     public void onCreate() {
         super.onCreate();
         butterboard = (Butterboard) getApplicationContext();
         butterboard.addListener(this);
+
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
     }
 
     @Override
@@ -46,20 +48,21 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
                 input.deleteSurroundingText(1, 0);
                 break;
             case Keyboard.KEYCODE_SHIFT:
-                caps = !caps;
-                qwerty.setShifted(caps);
-                keyboardView.invalidateAllKeys();
+                keyboardView.setShifted(!keyboardView.isShifted());
                 break;
             case Keyboard.KEYCODE_DONE:
                 input.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
             default:
                 char code = (char) primaryCode;
-                if (Character.isLetter(code) && caps) {
+                if (Character.isLetter(code) && keyboardView.isShifted()) {
                     code = Character.toUpperCase(code);
+                    keyboardView.setShifted(false);
                 }
                 input.commitText(String.valueOf(code), 1);
         }
+
+        vibrator.vibrate(20);
     }
 
     // TODO - FILL WITH GESTURES
@@ -94,9 +97,7 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
     @Override
     public View onCreateInputView() {
         keyboardView = (ButteryKeyboardView) getLayoutInflater().inflate(R.layout.layout_keyboard, null); // Avoid Passing Null - TODO: FIND ALTERNATIVE
-
-        qwerty = new Keyboard(this, R.xml.qwerty);
-        keyboardView.setKeyboard(qwerty);
+        keyboardView.setKeyboard(new Keyboard(this, R.xml.qwerty));
         keyboardView.setOnKeyboardActionListener(this);
 
         onColorChanged(butterboard.getColor());

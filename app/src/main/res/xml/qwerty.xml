@@ -66,8 +66,7 @@
         <!--TODO: ^^^^CHANGE THIS TO LEFT BOTTOM OF KEYBOARD + SHOW NEW KEYS LAYOUT^^^^-->
         <Key
             android:codes="32"
-            android:keyLabel="SPACE"
-            android:keyBackground="@color/space"
+            android:keyLabel="_"
             android:keyWidth="65%p"
             android:isRepeatable="true" />
         <Key android:codes="46" android:keyLabel="."/>
