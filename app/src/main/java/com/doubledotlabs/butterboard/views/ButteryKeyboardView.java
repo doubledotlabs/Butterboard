@@ -6,9 +6,12 @@ import android.graphics.Color;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.support.annotation.ColorInt;
+import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 
+import com.doubledotlabs.butterboard.R;
 import com.doubledotlabs.butterboard.utils.ColorUtils;
 import com.doubledotlabs.butterboard.utils.TextDrawable;
 
@@ -45,6 +48,8 @@ public class ButteryKeyboardView extends KeyboardView {
         this.isShifted = isShifted;
         if (getKeyboard() != null) {
             getKeyboard().setShifted(isShifted);
+            getKeyboard().getKeys().get(getKeyboard().getShiftKeyIndex()).icon = VectorDrawableCompat.create(getResources(), isShifted ? R.drawable.ic_capslock : R.drawable.ic_caps, getContext().getTheme());
+
             invalidateAllKeys();
         }
         return super.setShifted(isShifted);
@@ -58,10 +63,14 @@ public class ButteryKeyboardView extends KeyboardView {
                 if (key.label != null) {
                     key.icon = new TextDrawable(getContext(), getShiftedLabel(key.label.toString()), isDark ? Color.WHITE : Color.BLACK);
                     key.label = null;
-                } else if (key.icon != null && key.icon instanceof TextDrawable) {
-                    key.icon = new TextDrawable(getContext(), getShiftedLabel(((TextDrawable) key.icon).getText()), isDark ? Color.WHITE : Color.BLACK);
                 } else if (key.icon != null) {
-                    DrawableCompat.setTint(key.icon, isDark ? Color.WHITE : Color.BLACK);
+                    if (key.icon instanceof TextDrawable) {
+                        key.icon = new TextDrawable(getContext(), getShiftedLabel(((TextDrawable) key.icon).getText()), isDark ? Color.WHITE : Color.BLACK);
+                    } else {
+                        DrawableCompat.setTint(key.icon, isDark ? Color.WHITE : Color.BLACK);
+                        if (key.icon instanceof AnimatedVectorDrawableCompat)
+                            ((AnimatedVectorDrawableCompat) key.icon).start();
+                    }
                 }
             }
         }
