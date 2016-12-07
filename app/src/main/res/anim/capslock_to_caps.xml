@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:name="path"
+        android:propertyName="pathData"
+        android:duration="250"
+        android:valueFrom="M 12 8.41 L 16.59 13 L 18.59 11 L 12 4.59 L 5.41 11 L 7.41 13 L 12 8.41 Z M 6 18 L 18.59 18 L 18.59 15 L 5.41 15 L 5.41 18 Z"
+        android:valueTo="M 12 8.41 L 16.59 13 L 18 11.59 L 12 5.59 L 6 11.59 L 7.41 13 L 12 8.41 Z M 6 18 L 18 18 L 18 16 L 6 16 L 6 18 Z"
+        android:valueType="pathType"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator" />
+    <objectAnimator
+        android:name="path"
+        android:propertyName="fillColor"
+        android:duration="250"
+        android:valueFrom="#ff000000"
+        android:valueTo="#B3000000"
+        android:valueType="colorType"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator" />
+</set>

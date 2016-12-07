@@ -1,0 +1,6 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_caps">
+    <target
+        android:name="path"
+        android:animation="@anim/capslock_to_caps" />
+</animated-vector>
