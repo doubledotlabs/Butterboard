@@ -1,4 +1,4 @@
-#Butterboard for Android and AOSDD
+#Butterboard for Android and Double Dot OS
 Simple keyboard with stickers and gif search
 ````
    Copyright 2016 Double Dot Labs
