@@ -22,15 +22,22 @@ public class ButteryKeyboardView extends KeyboardView {
 
     public ButteryKeyboardView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
 
     public ButteryKeyboardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
     }
 
     @TargetApi(21)
     public ButteryKeyboardView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        init();
+    }
+
+    private void init() {
+        setPreviewEnabled(false);
     }
 
     public void setColor(@ColorInt int color) {
@@ -48,7 +55,8 @@ public class ButteryKeyboardView extends KeyboardView {
         this.isShifted = isShifted;
         if (getKeyboard() != null) {
             getKeyboard().setShifted(isShifted);
-            getKeyboard().getKeys().get(getKeyboard().getShiftKeyIndex()).icon = VectorDrawableCompat.create(getResources(), isShifted ? R.drawable.ic_capslock : R.drawable.ic_caps, getContext().getTheme());
+            if (getKeyboard().getShiftKeyIndex() >= 0 && getKeyboard().getShiftKeyIndex() < getKeyboard().getKeys().size())
+                getKeyboard().getKeys().get(getKeyboard().getShiftKeyIndex()).icon = VectorDrawableCompat.create(getResources(), isShifted ? R.drawable.ic_capslock : R.drawable.ic_caps, getContext().getTheme());
 
             invalidateAllKeys();
         }

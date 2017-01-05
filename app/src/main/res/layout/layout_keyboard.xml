@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<com.doubledotlabs.butterboard.views.ButteryKeyboardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.doubledotlabs.butterboard.views.ButteryKeyboardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/keyboard"
-    android:keyBackground="@android:color/transparent"
-    android:background="@color/keyboard_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:keyTextSize="24sp"
+    android:background="@color/keyboard_main"
     android:inputType="textAutoCorrect"
-    android:keyPreviewLayout="@layout/layout_preview" />
+    android:keyBackground="@android:color/transparent"
+    android:keyPreviewLayout="@layout/layout_preview"
+    android:keyTextSize="24sp"
+    android:popupLayout="@layout/layout_keyboard_popup" />

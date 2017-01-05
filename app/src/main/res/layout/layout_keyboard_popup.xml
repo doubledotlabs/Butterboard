@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@android:id/keyboardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:keyBackground="@android:color/transparent"
+        android:keyPreviewLayout="@layout/layout_preview"
+        android:keyTextColor="@android:color/black"
+        android:keyTextSize="22sp"
+        android:popupLayout="@layout/layout_keyboard_popup" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@android:id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_close" />
+
+</LinearLayout>
