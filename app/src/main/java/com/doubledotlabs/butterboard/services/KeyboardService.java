@@ -24,6 +24,9 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
 
     private ButteryKeyboardView keyboardView;
 
+    private long lastCapsTime;
+    private boolean isCapsLock;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -48,7 +51,14 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
                 input.deleteSurroundingText(1, 0);
                 break;
             case Keyboard.KEYCODE_SHIFT:
-                keyboardView.setShifted(!keyboardView.isShifted());
+                long now = System.currentTimeMillis();
+
+                if (isCapsLock) isCapsLock = false;
+                else if (lastCapsTime + 800 > now)
+                    isCapsLock = true;
+
+                keyboardView.setShifted(isCapsLock || !keyboardView.isShifted());
+                lastCapsTime = now;
                 break;
             case Keyboard.KEYCODE_DONE:
                 input.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
@@ -57,7 +67,7 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
                 char code = (char) primaryCode;
                 if (Character.isLetter(code) && keyboardView.isShifted()) {
                     code = Character.toUpperCase(code);
-                    keyboardView.setShifted(false);
+                    keyboardView.setShifted(isCapsLock);
                 }
                 input.commitText(String.valueOf(code), 1);
         }

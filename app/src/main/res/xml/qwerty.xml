@@ -138,7 +138,7 @@
             android:keyLabel=" "
             android:keyWidth="60%p" />
         <Key
-            android:codes="46,44"
+            android:codes="46"
             android:keyLabel="."
             android:keyWidth="10%p"
             android:popupCharacters=".,?!#@"
