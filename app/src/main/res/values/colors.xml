@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimaryLight">#5C6BC0</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccentLight">#1DE9B6</color>
     <color name="colorAccent">#00BFA5</color>
+    <color name="colorAccentDark">#008070</color>
 
     <color name="keyboard_main">#263238</color>
     <color name="space">#607D8B</color>
