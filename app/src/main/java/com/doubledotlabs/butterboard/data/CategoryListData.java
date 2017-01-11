@@ -1,6 +1,5 @@
 package com.doubledotlabs.butterboard.data;
 
-import android.graphics.Color;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.LayoutInflater;
@@ -10,17 +9,15 @@ import android.widget.TextView;
 
 import com.doubledotlabs.butterboard.R;
 import com.doubledotlabs.butterboard.fragments.CategoryFragment;
-import com.doubledotlabs.butterboard.utils.ColorUtils;
 
 public class CategoryListData extends ListData<CategoryListData.ViewHolder> {
 
     private String text;
-    private int color, resource, fragment;
+    private int resource, fragment;
 
-    public CategoryListData(int resource, String text, int color, int fragment) {
+    public CategoryListData(int resource, String text, int fragment) {
         this.resource = resource;
         this.text = text;
-        this.color = color;
         this.fragment = fragment;
     }
 
@@ -31,24 +28,19 @@ public class CategoryListData extends ListData<CategoryListData.ViewHolder> {
 
     @Override
     public void bindView(ViewHolder holder) {
-        holder.background.setBackgroundColor(color);
         holder.imageView.setImageResource(resource);
-        holder.imageView.setColorFilter(ColorUtils.isColorDark(color) ? Color.WHITE : Color.BLACK);
         holder.textView.setText(text);
-        holder.textView.setTextColor(ColorUtils.isColorDark(color) ? Color.WHITE : Color.BLACK);
     }
 
     static class ViewHolder extends ListData.ViewHolder implements View.OnClickListener {
 
         private CategoryListData listData;
 
-        private View background;
         private AppCompatImageView imageView;
         private TextView textView;
 
         ViewHolder(View itemView, CategoryListData listData) {
             super(itemView);
-            background = itemView.findViewById(R.id.background);
             imageView = (AppCompatImageView) itemView.findViewById(R.id.imageView);
             textView = (TextView) itemView.findViewById(R.id.textView);
 
