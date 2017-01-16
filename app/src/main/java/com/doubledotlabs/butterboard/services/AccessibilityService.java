@@ -9,6 +9,8 @@ import android.view.accessibility.AccessibilityEvent;
 import com.doubledotlabs.butterboard.Butterboard;
 import com.doubledotlabs.butterboard.utils.ColorUtils;
 
+import james.palettegetter.PaletteGetter;
+
 public class AccessibilityService extends android.accessibilityservice.AccessibilityService {
 
     private PackageManager packageManager;
@@ -43,11 +45,8 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
 
             int color = ColorUtils.getDefaultColor(this);
 
-            try {
-                Integer primaryColor = ColorUtils.getPrimaryColor(this, componentName);
-                if (primaryColor != null) color = primaryColor;
-            } catch (Exception ignored) {
-            }
+            Integer primaryColor = PaletteGetter.get(this, componentName);
+            if (primaryColor != null) color = primaryColor;
 
             butterboard.setColor(color);
         }
