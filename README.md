@@ -1,5 +1,5 @@
-#Butterboard for Android and Double Dot OS
-Simple keyboard with stickers and gif search
+# Butterboard
+Simple keyboard with stickers and gif search for Android and NervOS.
 ````
    Copyright 2016 Double Dot Labs
 
